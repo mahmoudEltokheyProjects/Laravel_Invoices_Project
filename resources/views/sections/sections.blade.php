@@ -69,14 +69,16 @@
                 <!-- Bordered Table -->
                 <div class="col-xl-12">
                     <div class="card mg-b-20">
-                        <div class="card-header pb-0">
-                            <div class="d-flex justify-content-between">
-                                <a  class="modal-effect btn btn-primary" href="#modaldemo8"
-                                    data-effect="effect-scale" data-toggle="modal">
-                                إضافة قسم
-                                </a>
+                        @can('اضافة قسم')
+                            <div class="card-header pb-0">
+                                <div class="d-flex justify-content-between">
+                                    <a  class="modal-effect btn btn-primary" href="#modaldemo8"
+                                        data-effect="effect-scale" data-toggle="modal">
+                                    إضافة قسم
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        @endcan
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="example1" class="table key-buttons text-md-nowrap" data-page-length="50">
