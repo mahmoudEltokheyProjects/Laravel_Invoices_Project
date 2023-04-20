@@ -3,7 +3,7 @@
     <!--Internal   Notify -->
     <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @section('title')
-    صلاحيات المستخدمين - ادارة الفواتير
+    صلاحيات المستخدمين
 @stop
 
 

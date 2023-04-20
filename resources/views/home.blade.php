@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    لوحة التحكم - برنامج الفواتير
+    لوحة التحكم
 @stop
 @section('css')
 <!--  Owl-carousel css-->
@@ -13,8 +13,8 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="left-content">
 						<div>
-						  <h2 class="main-content-title tx-24 mg-b-15 mg-b-lg-1 lh-3">مرحبا بك في شركة الحمد لتحصيل الديون للبنوك</h2>
-						  <p class="mg-b-0">لوحة التحكم لإدارة الفواتير</p>
+						  <h2 class="main-content-title tx-24 mg-b-15 mg-b-lg-1 lh-3">مرحبا بك في شركة الحمد لإدارة الاقسام و المبيعات</h2>
+						  <p class="mg-b-0">لوحة التحكم برنامج ادارة الاقسام و المبيعات</p>
 						</div>
 					</div>
 					<div class="main-dashboard-header-right">
@@ -23,14 +23,6 @@
 							<div class="main-star">
 								<i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star"></i> <span>(14,873)</span>
 							</div>
-						</div>
-						<div>
-							<label class="tx-13">Online Sales</label>
-							<h5>563,275</h5>
-						</div>
-						<div>
-							<label class="tx-13">Offline Sales</label>
-							<h5>783,675</h5>
 						</div>
 					</div>
 				</div>
@@ -50,10 +42,10 @@
                             <div class="d-flex">
                                 <div class="">
                                     <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                        {{ number_format(\App\Models\invoices::sum('total'), 2) }}
+                                        {{-- {{ number_format(\App\Models\invoices::sum('total'), 2) }} --}}
                                     </h4>
                                     <p class="mb-0 tx-12 text-white op-7">
-                                        عدد الفواتير : {{ App\Models\invoices::count('total') }}
+                                        {{-- عدد الفواتير : {{ App\Models\invoices::count('total') }} --}}
                                     </p>
                                 </div>
                                 <span class="float-right my-auto mr-auto">
@@ -77,27 +69,27 @@
                             <div class="d-flex">
                                 <div class="">
                                     <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                        {{ number_format(App\Models\invoices::where('value_status',2)->sum('total') , 2 )  }}
+                                        {{-- {{ number_format(App\Models\invoices::where('value_status',2)->sum('total') , 2 )  }} --}}
                                     </h4>
                                     <p class="mb-0 tx-12 text-white op-7">
-                                        عدد الفواتير : {{ App\Models\invoices::where('value_status',2)->count('total') }}
+                                        {{-- عدد الفواتير : {{ App\Models\invoices::where('value_status',2)->count('total') }} --}}
                                     </p>
                                 </div>
                                 <span class="float-right my-auto mr-auto">
                                     <i class="fas fa-arrow-circle-down text-white"></i>
                                     <span class="text-white op-7">
                                         @php
-                                        // Number of "All Inovoices"
-                                        $count_all_invoices= \App\Models\invoices::count();
-                                        // Number of "unpaid_invoices"
-                                        $count_unpaid_invoices = \App\Models\invoices::where('value_status', 2)->count();
-                                        // We can't Divide on zero
-                                        if($count_unpaid_invoices == 0)
-                                        {  echo $count_unpaid_invoices = 0 ; }
-                                        else
-                                        {
-                                            echo $count_unpaid_invoices=round($count_unpaid_invoices/$count_all_invoices*100,2).""."%";
-                                        }
+                                        // // Number of "All Inovoices"
+                                        // $count_all_invoices= \App\Models\invoices::count();
+                                        // // Number of "unpaid_invoices"
+                                        // $count_unpaid_invoices = \App\Models\invoices::where('value_status', 2)->count();
+                                        // // We can't Divide on zero
+                                        // if($count_unpaid_invoices == 0)
+                                        // {  echo $count_unpaid_invoices = 0 ; }
+                                        // else
+                                        // {
+                                        //     echo $count_unpaid_invoices=round($count_unpaid_invoices/$count_all_invoices*100,2).""."%";
+                                        // }
                                         @endphp
                                     </span>
                                 </span>
@@ -118,16 +110,16 @@
                             <div class="d-flex">
                                 <div class="">
                                     <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                        {{ number_format(App\Models\invoices::where('value_status',1)->sum('total') , 2 ) }}
+                                        {{-- {{ number_format(App\Models\invoices::where('value_status',1)->sum('total') , 2 ) }} --}}
                                     </h4>
                                     <p class="mb-0 tx-12 text-white op-7">
-                                        عدد الفواتير : {{ App\Models\invoices::where('value_status',1)->count('total') }}
+                                        {{-- عدد الفواتير : {{ App\Models\invoices::where('value_status',1)->count('total') }} --}}
                                     </p>
                                 </div>
                                 <span class="float-right my-auto mr-auto">
                                     <i class="fas fa-arrow-circle-up text-white"></i>
                                     <span class="text-white op-7">
-                                        @php
+                                        {{-- @php
                                             // Number of "All Inovoices"
                                             $count_all_invoices= \App\Models\invoices::count();
                                             // Number of "Paid_Inovoices"
@@ -141,7 +133,7 @@
                                             {
                                                echo $count_paid_invoices  = round($count_paid_invoices  / $count_all_invoices * 100 , 2).""."%" ;
                                             }
-                                        @endphp
+                                        @endphp --}}
                                     </span>
                                 </span>
                             </div>
@@ -161,16 +153,16 @@
                             <div class="d-flex">
                                 <div class="">
                                     <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                        {{ number_format(App\Models\invoices::where('value_status',3)->sum('total'),2) }}
+                                        {{-- {{ number_format(App\Models\invoices::where('value_status',3)->sum('total'),2) }} --}}
                                     </h4>
                                     <p class="mb-0 tx-12 text-white op-7">
-                                        عدد الفواتير : {{ App\Models\invoices::where('value_status',3)->count('total') }}
+                                        {{-- عدد الفواتير : {{ App\Models\invoices::where('value_status',3)->count('total') }} --}}
                                     </p>
                                 </div>
                                 <span class="float-right my-auto mr-auto">
                                     <i class="fas fa-arrow-circle-down text-white"></i>
                                     <span class="text-white op-7">
-                                        @php
+                                        {{-- @php
                                             // Number of "All Inovoices"
                                             $count_all_invoices= \App\Models\invoices::count();
                                             // Number of "partial_paid_invoices"
@@ -184,7 +176,7 @@
                                             {
                                                 echo $count_partial_paid_invoices = round($count_partial_paid_invoices / $count_all_invoices * 100 , 2).""."%";
                                             }
-                                        @endphp
+                                        @endphp --}}
                                     </span>
                                 </span>
                             </div>
@@ -206,18 +198,18 @@
                             <i class="mdi mdi-dots-horizontal text-gray"></i>
                         </div>
                     </div>
-                    <div class="card-body">
+                    {{-- <div class="card-body">
                         {!! $chartjs->render() !!}
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <!-- +++++++++++++++++++++++++++++ Chart 2 +++++++++++++++++++++++++++++ -->
             <div class="col-lg-12 col-xl-5">
                 <div class="card card-dashboard-map-one">
                     <label class="main-content-label">نسبة احصائية للفواتير</label>
-                    <div class="">
+                    {{-- <div class="">
                         {!! $chartjs_2->render() !!}
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

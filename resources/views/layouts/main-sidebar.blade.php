@@ -20,60 +20,33 @@
                 </div>
             </div>
             <ul class="side-menu">
-                    <li class="side-item side-item-category">برنامج ادارة الفواتير</li>
-                    <li class="slide">
-                        <a class="side-menu__item" href="{{ url('/' . $page='home') }}">
-                            <i class="fa fa-home fa-lg ml-2" style="color:#5b6e88;"></i>
-                            <span class="side-menu__label">الرئيسية</span>
-                        </a>
-                    </li>
-                    @can('قائمة الفواتير')
-                    <li class="slide">
-                        <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
-                            <i class="fa fa-file fa-lg ml-2" style="color:#5b6e88;"></i>
-                            <span class="side-menu__label">الفواتير</span>
-                            <i class="angle fe fe-chevron-down"></i>
-                        </a>
-                        <ul class="slide-menu">
-                            @can('قائمة الفواتير')
-                            <li> <a class="slide-item" href="{{ url('/' . $page='invoices') }}">قائمة الفواتير</a> </li>
-                            @endcan
-                            @can('الفواتير المدفوعة')
-                            <li> <a class="slide-item" href="{{ url('/' . $page='Invoice_Paid') }}">الفواتير المدفوعة</a> </li>
-                            @endcan
-                            @can('الفواتير الغير مدفوعة')
-                            <li> <a class="slide-item" href="{{ url('/' . $page='unpaid_invoice') }}">الفواتير الغير مدفوعة</a> </li>
-                            @endcan
-                            @can('الفواتير المدفوعة جزئيا')
-                            <li> <a class="slide-item" href="{{ url('/' . $page='partial_paid_invoice') }}">الفواتير المدفوعة جزئياً</a> </li>
-                            @endcan
-                            @can('ارشيف الفواتير')
-                            <li> <a class="slide-item" href="{{ url('/' . $page='Archive') }}">ارشيف الفواتير</a> </li>
-                            @endcan
-                        </ul>
-                    </li>
-                @endcan
-                @can('التقارير')
+                <li class="side-item side-item-category">برنامج ادارة الاقسام و المبيعات</li>
+                {{-- +++++++++++++++++++++++++++++++++ Main +++++++++++++++++++++++++++++++++ --}}
                 <li class="slide">
-                    <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
-                        <i class="fa fa-print fa-lg ml-2" style="color:#5b6e88;"></i>
-                        <span class="side-menu__label">التقارير</span>
-                        <i class="angle fe fe-chevron-down"></i>
+                    <a class="side-menu__item" href="{{ url('/' . $page='home') }}">
+                        <i class="fa fa-home fa-lg ml-2" style="color:#5b6e88;"></i>
+                        <span class="side-menu__label">الرئيسية</span>
                     </a>
-                    <ul class="slide-menu">
-                        @can('تقرير الفواتير')
-                        <li>
-                            <a class="slide-item" href="{{ url('/' . $page='invoices_report') }}">تقارير الفواتير</a>
-                        </li>
-                        @endcan
-                        @can('تقرير العملاء')
-                        <li>
-                            <a class="slide-item" href="{{ url('/' . $page='customers_report') }}">تقارير العملاء</a>
-                        </li>
-                        @endcan
-                    </ul>
                 </li>
+                {{-- +++++++++++++++++++++++++++++++++ Sections +++++++++++++++++++++++++++++++++ --}}
+                @can('الاقسام')
+                    <li class="slide">
+                        <a class="side-menu__item" href="{{ url('/' . $page='sections') }}">
+                            <i class="fa fa-home fa-lg ml-2" style="color:#5b6e88;"></i>
+                            <span class="side-menu__label">الاقسام</span>
+                        </a>
+                    </li>
                 @endcan
+                {{-- +++++++++++++++++++++++++++++++++ Prodcut +++++++++++++++++++++++++++++++++ --}}
+                @can('المنتجات')
+                    <li class="slide">
+                        <a class="side-menu__item" href="{{ url('/' . $page='products') }}">
+                            <i class="fa fa-home fa-lg ml-2" style="color:#5b6e88;"></i>
+                            <span class="side-menu__label">المنتجات</span>
+                        </a>
+                    </li>
+                @endcan
+                {{-- ++++++++++++++++++++++++++ Users[main_admin,admin,user] ++++++++++++++++++++++++++ --}}
                 @can('المستخدمين')
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
@@ -91,23 +64,6 @@
                         <li>
                             <a class="slide-item" href="{{ url('/' . $page='roles') }}">صلاحيات المستخدمين</a>
                         </li>
-                        @endcan
-                    </ul>
-                </li>
-                @endcan
-                @can('الاعدادات')
-                <li class="slide">
-                    <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
-                        <i class="fa fa-cog fa-lg ml-2" style="color:#5b6e88;"></i>
-                        <span class="side-menu__label">الاعدادات</span>
-                        <i class="angle fe fe-chevron-down"></i>
-                    </a>
-                    <ul class="slide-menu">
-                        @can('الاقسام')
-                        <li> <a class="slide-item" href="{{ url('/' . $page='sections') }}">الاقسام</a> </li>
-                        @endcan
-                        @can('المنتجات')
-                        <li> <a class="slide-item" href="{{ url('/' . $page='products') }}">المنتجات</a> </li>
                         @endcan
                     </ul>
                 </li>
